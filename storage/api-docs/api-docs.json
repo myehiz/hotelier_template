@@ -1,0 +1,270 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Trivago API",
+    "description": "hotelier can manipulate the information that they want to display about hotels",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://trivago.test/api/v1",
+      "description": "server to api"
+    }
+  ],
+  "paths": {
+    "/hotels/{id}/book/": {
+      "post": {
+        "summary": "Book hotel if availability > 0 .",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "The ID of the user to return.",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A hotel booked."
+          }
+        }
+      }
+    },
+    "/hotels/{id}": {
+      "get": {
+        "summary": "Returns all hotels.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "The ID of the user to return.",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A hotel object.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "format": "int64",
+                      "example": 4
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "Hotel Name example"
+                    },
+                    "rating": {
+                      "type": "integer",
+                      "example": 4
+                    },
+                    "image": {
+                      "type": "string"
+                    },
+                    "reputation": {
+                      "type": "string",
+                      "example": "green"
+                    },
+                    "category": {
+                      "type": "string",
+                      "example": "hotel"
+                    },
+                    "price": {
+                      "type": "integer",
+                      "example": 100
+                    },
+                    "availability": {
+                      "type": "integer",
+                      "example": 10
+                    },
+                    "country": {
+                      "type": "string",
+                      "example": "Egypt"
+                    },
+                    "city": {
+                      "type": "string",
+                      "example": "Cairo"
+                    },
+                    "State": {
+                      "type": "string",
+                      "example": "Nasr city"
+                    },
+                    "zip_code": {
+                      "type": "integer",
+                      "example": 12345
+                    },
+                    "address": {
+                      "type": "string",
+                      "example": "masr elgdida"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/hotels/": {
+      "get": {
+        "summary": "Returns all hotels.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete hotel by ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Id of Hotel.",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a hotel.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "rating": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 5
+                  },
+                  "category": {
+                    "type": "integer"
+                  },
+                  "zip_code": {
+                    "type": "integer",
+                    "maxLength": 5
+                  },
+                  "image": {
+                    "type": "string"
+                  },
+                  "price": {
+                    "type": "integer"
+                  },
+                  "reputation": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 1000
+                  },
+                  "availability": {
+                    "type": "integer"
+                  },
+                  "country_id": {
+                    "type": "integer"
+                  },
+                  "city_id": {
+                    "type": "integer"
+                  },
+                  "state_id": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a hotel.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "rating": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 5
+                  },
+                  "category": {
+                    "type": "integer"
+                  },
+                  "zip_code": {
+                    "type": "integer",
+                    "maxLength": 5
+                  },
+                  "image": {
+                    "type": "string"
+                  },
+                  "price": {
+                    "type": "integer"
+                  },
+                  "reputation": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 1000
+                  },
+                  "availability": {
+                    "type": "integer"
+                  },
+                  "country_id": {
+                    "type": "integer"
+                  },
+                  "city_id": {
+                    "type": "integer"
+                  },
+                  "state_id": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "updated"
+          }
+        }
+      }
+    }
+  }
+}
